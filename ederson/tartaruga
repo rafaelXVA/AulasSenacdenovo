@@ -1,0 +1,4 @@
+import turtle
+turtle.setup(1200,800)
+
+turtle.done()

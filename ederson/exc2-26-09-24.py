@@ -1,0 +1,10 @@
+import os
+texto1=str(input("Texto 1: "))
+texto2=str(input("Texto 2: "))
+os.system("cls")
+print(texto1)
+print(texto2)
+print(f"texto um contém ", end="")
+print(len(texto1), end="")
+print(" e o texto dois contém ", end="")
+print(len(texto2))

@@ -1,0 +1,6 @@
+stringCode=str(input("pode colocar coisa de bogos printed here\n"))
+intCode=int(input("bogos printed?\n"))
+floatCode=float(input("bogos printed?\n"))
+print(type(stringCode))
+print(type(intCode))
+print(type(floatCode))
