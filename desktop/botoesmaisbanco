@@ -1,0 +1,124 @@
+import sys
+import mysql.connector
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap, QFont
+from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QMessageBox
+
+
+def conector():
+    return mysql.connector.connect(
+        host='127.0.0.1',
+        user='root',
+        password='',
+        database='loginesenha'
+    )
+
+class MainAppWindow(QWidget):
+    def __init__(self, caminho_imagem):
+        super().__init__()
+        self.init_ui(caminho_imagem)
+
+    def center_window(self):
+        frame_geometry = self.frameGeometry()
+        screen_center = QApplication.primaryScreen().availableGeometry().center()
+        frame_geometry.moveCenter(screen_center)
+        self.move(frame_geometry.topLeft())
+    
+
+    def init_ui(self, caminho_imagem):
+        self.setWindowTitle('Login realizado com sucesso')
+        self.setGeometry(100, 100, 400, 400)
+        
+        self.label_welcome = QLabel("Bem-vindo!", self)
+        self.label_welcome.setFont(QFont("Arial", 33))
+        self.label_welcome.setAlignment(Qt.AlignCenter)
+
+        self.label_gato = QLabel(self)
+        if caminho_imagem:  
+            gato_img = QPixmap(caminho_imagem)
+            self.label_gato.setPixmap(gato_img.scaled(200, 200, Qt.KeepAspectRatio))
+        self.label_gato.setAlignment(Qt.AlignCenter)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.label_welcome)
+        layout.addWidget(self.label_gato)
+        layout.setAlignment(Qt.AlignCenter)
+
+        self.setLayout(layout)
+
+class NameWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.init_ui()
+
+    def init_ui(self):
+        self.setWindowTitle('Login')
+        self.setGeometry(100, 100, 500, 400) 
+
+        self.label_login = QLabel('Login:')
+        self.input_login = QLineEdit()
+        self.input_login.setFixedWidth(300)  
+
+        self.label_password = QLabel('Senha:')
+        self.input_password = QLineEdit()
+        self.input_password.setFixedWidth(300)  
+        self.input_password.setEchoMode(QLineEdit.Password)
+
+        self.button_login = QPushButton('Entrar')
+        self.button_login.setFixedWidth(300)  
+        self.button_login.clicked.connect(self.verifica_login)
+
+        self.label_gato = QLabel(self)
+        gato_img = QPixmap(r'C:\Users\suporte\Desktop\gatos\gato1.jpg')
+        self.label_gato.setPixmap(gato_img.scaled(200, 200, Qt.KeepAspectRatio))
+        self.label_gato.setAlignment(Qt.AlignCenter)
+
+        layout = QVBoxLayout()
+        layout.setAlignment(Qt.AlignCenter)  # Centralizando os elementos
+        layout.addWidget(self.label_login, alignment=Qt.AlignCenter)
+        layout.addWidget(self.input_login, alignment=Qt.AlignCenter)
+        layout.addWidget(self.label_password, alignment=Qt.AlignCenter)
+        layout.addWidget(self.input_password, alignment=Qt.AlignCenter)
+        layout.addWidget(self.button_login, alignment=Qt.AlignCenter)
+        layout.addWidget(self.label_gato, alignment=Qt.AlignCenter)
+
+        self.setLayout(layout)
+
+    def verifica_login(self):
+        login = self.input_login.text()
+        senha = self.input_password.text()
+
+        try:
+            db = conector()
+            cursor = db.cursor()
+            query = "SELECT imagem FROM dados WHERE login = %s AND senha = %s"
+            cursor.execute(query, (login, senha))
+            user = cursor.fetchone()
+            cursor.close()
+            db.close()
+
+            if user:
+                caminho_imagem = user[0]  
+                
+                self.main_window = MainAppWindow(caminho_imagem)
+                self.main_window.show()
+                self.close()
+            else:
+                QMessageBox.critical(self, "Erro", "Login ou senha incorretos")
+        except mysql.connector.Error as err:
+            QMessageBox.critical(self, "Erro", f"Erro ao conectar: {err}")
+
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+
+    window = NameWindow()
+    window.show()
+
+    sys.exit(app.exec_())
+
+
+
+
+

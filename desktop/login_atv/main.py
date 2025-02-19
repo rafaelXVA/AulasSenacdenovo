@@ -1,32 +1,26 @@
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QWidget)
 import sys
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMainWindow
+from PySide6.QtGui import QPixmap
 from layout import Ui_MainWindow
 from comandos import comando
-
-
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui=Ui_MainWindow()
-        self.comando=comando()
-        self.ui.btn_login.clicked.connect(self.comando.click)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.comando = comando()
+        self.ui.btn_login.clicked.connect(self.click)
         
-
-
-if __name__=="__main__":
-    app=QApplication(sys.argv)
-    MainWindow=QMainWindow()
-    ui=Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    def click(self):
+        password=self.ui.le_password.text()
+        user=self.ui.le_user.text()
+        if password=="adm" and user=="adm":
+            print("oi")
+        else:
+            print("ha")
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show() 
     sys.exit(app.exec())
