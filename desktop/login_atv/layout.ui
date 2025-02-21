@@ -106,7 +106,7 @@
       <enum>QLineEdit::EchoMode::Password</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="btn_signup">
      <property name="geometry">
       <rect>
        <x>60</x>

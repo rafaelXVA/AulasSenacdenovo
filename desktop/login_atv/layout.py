@@ -51,10 +51,10 @@ class Ui_MainWindow(object):
         self.le_password.setObjectName(u"le_password")
         self.le_password.setGeometry(QRect(40, 90, 113, 22))
         self.le_password.setEchoMode(QLineEdit.EchoMode.Password)
-        self.pushButton = QPushButton(self.frame)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(60, 150, 75, 24))
-        self.pushButton.setStyleSheet(u"background-color: rgb(85, 255, 127);")
+        self.btn_signup = QPushButton(self.frame)
+        self.btn_signup.setObjectName(u"btn_signup")
+        self.btn_signup.setGeometry(QRect(60, 150, 75, 24))
+        self.btn_signup.setStyleSheet(u"background-color: rgb(85, 255, 127);")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -67,6 +67,6 @@ class Ui_MainWindow(object):
         self.btn_login.setText(QCoreApplication.translate("MainWindow", u"login", None))
         self.txt_user.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.txt_password.setText(QCoreApplication.translate("MainWindow", u"Password", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"sign up", None))
+        self.btn_signup.setText(QCoreApplication.translate("MainWindow", u"sign up", None))
     # retranslateUi
 
