@@ -29,96 +29,17 @@
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <widget class="QLineEdit" name="senha_dados">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>290</y>
-         <width>151</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="frame">
-        <bool>true</bool>
-       </property>
-       <property name="echoMode">
-        <enum>QLineEdit::EchoMode::Password</enum>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="usuario_dados">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>340</y>
-         <width>151</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="usuario_login">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>320</y>
-         <width>43</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Usuário:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="senha_login">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>260</y>
-         <width>35</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Senha:</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="LOgin">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>390</y>
-         <width>91</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 247, 15);
-background-color: rgb(187, 214, 68);
-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="text">
-        <string>Login</string>
-       </property>
-      </widget>
       <widget class="QFrame" name="frame">
        <property name="geometry">
         <rect>
-         <x>-10</x>
-         <y>-10</y>
+         <x>-20</x>
+         <y>-20</y>
          <width>621</width>
          <height>631</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-image: url(:/foto/lan4.jpg);</string>
+        <string notr="true">image: url(:/foto/lan4.jpg);</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::Shape::StyledPanel</enum>
@@ -126,32 +47,86 @@ color: rgb(255, 255, 255);</string>
        <property name="frameShadow">
         <enum>QFrame::Shadow::Raised</enum>
        </property>
-       <widget class="QFrame" name="frame_2">
+       <widget class="QLabel" name="senha_login">
         <property name="geometry">
          <rect>
-          <x>180</x>
-          <y>60</y>
-          <width>311</width>
-          <height>271</height>
+          <x>240</x>
+          <y>210</y>
+          <width>35</width>
+          <height>16</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
+        <property name="text">
+         <string>Senha:</string>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+       </widget>
+       <widget class="QLineEdit" name="senha_dados">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>230</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::EchoMode::Password</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="usuario_login">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>260</y>
+          <width>43</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Usuário:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="usuario_dados">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>280</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="LOgin">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>320</y>
+          <width>91</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 247, 15);
+background-color: rgb(187, 214, 68);
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Login</string>
         </property>
        </widget>
       </widget>
-      <zorder>frame</zorder>
-      <zorder>senha_dados</zorder>
-      <zorder>usuario_dados</zorder>
-      <zorder>usuario_login</zorder>
-      <zorder>senha_login</zorder>
-      <zorder>LOgin</zorder>
      </widget>
     </item>
    </layout>

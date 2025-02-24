@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMainWindow
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMainWindow, QMessageBox
 from PySide6.QtGui import QPixmap
 from layout import Ui_MainWindow
 from form import Ui_furmulario
@@ -9,6 +9,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
+        self.box=QMessageBox()
         self.ui.setupUi(self)
         self.comando = comando()
         self.ui.btn_login.clicked.connect(self.login)
@@ -23,8 +24,10 @@ class MainWindow(QMainWindow):
         user=self.ui.le_user.text()
         if password=="adm" and user=="adm":
             print("oi")
+            self.box.open()
         else:
             print("ha")
+    
         
 
 if __name__ == "__main__":
