@@ -1,8 +1,8 @@
 import sys
 from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMainWindow, QMessageBox
 from PySide6.QtGui import QPixmap
-from layout import Ui_MainWindow
-from form import Ui_furmulario
+from desktop.lan.layout import Ui_MainWindow
+from desktop.lan.form import Ui_furmulario
 from comandos import comando
 
 class MainWindow(QMainWindow):

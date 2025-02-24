@@ -17,19 +17,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
+import foto_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(625, 602)
         MainWindow.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        MainWindow.setStyleSheet(u"background-color: rgb(0, 0, 0);")
+        MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(300, 160, 201, 221))
+        self.frame.setGeometry(QRect(210, 180, 201, 221))
         self.frame.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
@@ -55,7 +56,13 @@ class Ui_MainWindow(object):
         self.btn_signup.setObjectName(u"btn_signup")
         self.btn_signup.setGeometry(QRect(60, 150, 75, 24))
         self.btn_signup.setStyleSheet(u"background-color: rgb(85, 255, 127);")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 0, 801, 601))
+        self.label.setStyleSheet(u"background-image: url(:/foto/lan4.jpg);")
         MainWindow.setCentralWidget(self.centralwidget)
+        self.label.raise_()
+        self.frame.raise_()
 
         self.retranslateUi(MainWindow)
 
@@ -68,5 +75,6 @@ class Ui_MainWindow(object):
         self.txt_user.setText(QCoreApplication.translate("MainWindow", u"User", None))
         self.txt_password.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.btn_signup.setText(QCoreApplication.translate("MainWindow", u"sign up", None))
+        self.label.setText("")
     # retranslateUi
 

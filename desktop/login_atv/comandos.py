@@ -1,5 +1,5 @@
-from layout import Ui_MainWindow
-from form import Ui_furmulario
+from desktop.lan.layout import Ui_MainWindow
+from desktop.lan.form import Ui_furmulario
 import sys
 
 class comando():
