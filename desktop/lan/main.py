@@ -11,10 +11,11 @@ class MainWindow(QMainWindow):
         self.box=QMessageBox()
         self.login=Ui_Login()
         self.cadastro=Ui_Cadastro()
-        self.login.setupUi(self)
+        self.cadastro.setupUi(self)
 
         self.login.btn_login.clicked.connect(self.btn_login)
         self.login.btn_signup.clicked.connect(self.btn_signup)
+        self.cadastro.btn_completar.clicked.connect(self.completar)
 
     def btn_login(self):
         self.password=self.login.le_password.text()
@@ -29,6 +30,8 @@ class MainWindow(QMainWindow):
             self.box.open()
     def btn_signup(self):
         self.cadastro.setupUi(self)
+    def completar(self):
+        print('a')
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

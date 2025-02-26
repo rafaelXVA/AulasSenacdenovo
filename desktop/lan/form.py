@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'untitled.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.8.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QDateEdit, QFrame,
-    QLabel, QLineEdit, QMainWindow, QPushButton,
-    QRadioButton, QSizePolicy, QWidget)
+from PySide6.QtWidgets import (QApplication, QDateEdit, QFrame, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QRadioButton,
+    QSizePolicy, QWidget)
 
 class Ui_furmulario(object):
     def setupUi(self, furmulario):
@@ -37,14 +37,14 @@ class Ui_furmulario(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.txt_formulario = QLabel(self.centralwidget)
         self.txt_formulario.setObjectName(u"txt_formulario")
-        self.txt_formulario.setGeometry(QRect(140, 20, 124, 36))
+        self.txt_formulario.setGeometry(QRect(140, 0, 124, 36))
         font = QFont()
         font.setPointSize(20)
         self.txt_formulario.setFont(font)
         self.txt_formulario.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.F_quest = QFrame(self.centralwidget)
         self.F_quest.setObjectName(u"F_quest")
-        self.F_quest.setGeometry(QRect(10, 120, 381, 461))
+        self.F_quest.setGeometry(QRect(10, 40, 381, 541))
         self.F_quest.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.F_quest.setFrameShape(QFrame.Shape.StyledPanel)
         self.F_quest.setFrameShadow(QFrame.Shadow.Raised)
@@ -87,17 +87,26 @@ class Ui_furmulario(object):
         self.DE_nascimento = QDateEdit(self.F_quest)
         self.DE_nascimento.setObjectName(u"DE_nascimento")
         self.DE_nascimento.setGeometry(QRect(20, 340, 110, 22))
-        self.CB_trabalha = QCheckBox(self.F_quest)
-        self.CB_trabalha.setObjectName(u"CB_trabalha")
-        self.CB_trabalha.setGeometry(QRect(20, 380, 171, 21))
-        self.CB_trabalha.setChecked(False)
         self.btn_completar = QPushButton(self.F_quest)
         self.btn_completar.setObjectName(u"btn_completar")
-        self.btn_completar.setGeometry(QRect(140, 420, 111, 24))
+        self.btn_completar.setGeometry(QRect(140, 470, 111, 24))
         self.btn_completar.setStyleSheet(u"color: rgb(107, 127, 255);\n"
 "border-color: rgb(107, 127, 255);")
         self.btn_completar.setAutoDefault(False)
         self.btn_completar.setFlat(False)
+        self.label = QLabel(self.F_quest)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(240, 130, 49, 16))
+        self.label_2 = QLabel(self.F_quest)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(240, 70, 49, 16))
+        self.lineEdit = QLineEdit(self.F_quest)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setGeometry(QRect(240, 150, 113, 22))
+        self.lineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+        self.lineEdit_2 = QLineEdit(self.F_quest)
+        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.lineEdit_2.setGeometry(QRect(240, 90, 113, 22))
         furmulario.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(furmulario)
@@ -120,7 +129,8 @@ class Ui_furmulario(object):
         self.txt_endereco.setText(QCoreApplication.translate("furmulario", u"Endere\u00e7o", None))
         self.txt_telefone.setText(QCoreApplication.translate("furmulario", u"Telefone", None))
         self.txt_nascimento.setText(QCoreApplication.translate("furmulario", u"Data de nascimento", None))
-        self.CB_trabalha.setText(QCoreApplication.translate("furmulario", u"J\u00e1 utilizou o estabelecimento", None))
         self.btn_completar.setText(QCoreApplication.translate("furmulario", u"Completar", None))
+        self.label.setText(QCoreApplication.translate("furmulario", u"Senha", None))
+        self.label_2.setText(QCoreApplication.translate("furmulario", u"User", None))
     # retranslateUi
 
