@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'layout.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.2
+## Created by: Qt User Interface Compiler version 6.8.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -24,6 +24,11 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(625, 602)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -58,7 +63,13 @@ class Ui_MainWindow(object):
         self.btn_signup.setStyleSheet(u"background-color: rgb(85, 255, 127);")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 0, 801, 601))
+        self.label.setGeometry(QRect(0, 0, 600, 600))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(60)
+        sizePolicy1.setVerticalStretch(60)
+        sizePolicy1.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy1)
+        self.label.setMaximumSize(QSize(600, 600))
         self.label.setStyleSheet(u"background-image: url(:/foto/lan4.jpg);")
         MainWindow.setCentralWidget(self.centralwidget)
         self.label.raise_()
