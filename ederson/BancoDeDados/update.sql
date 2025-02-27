@@ -1,7 +1,3 @@
-create database clientes;
-use clientes;
-
-
 create table cliente (
 	id_cliente int primary key auto_increment,
     nome varchar(50) not null,
@@ -12,8 +8,10 @@ create table cliente (
     id_nacionalidade int not null,
     fone varchar(20),
     id_raca int not null,
-    id_escolaridade int not null);
-
+    id_escolaridade int not null,
+    id_estadocivil int not null,
+    idade int not null);
+    
 create table estado(
 	id_estado int primary key auto_increment,
     estado varchar(40) not null);
@@ -22,6 +20,7 @@ create table cidade(
 	id_cidade int primary key auto_increment,
     cidade varchar(50) not null,
     id_estado int not null);
+    
 create table sexo(
 	id_sexo int primary key auto_increment,
     sexo varcharacter(1));
@@ -38,12 +37,17 @@ create table escolaridade(
 	id_escolaridade int primary key auto_increment,
     escolaridade varchar(50));
     
+create table estadocivil(
+	id_estadocivil int primary key auto_increment,
+    estadocivil varchar(20));
+    
 alter table cidade add foreign key (id_estado) references estado(id_estado);
-alter table cliente add foreign key (id_cidade) references cidade(id_cidade);
-alter table cliente add foreign key (id_sexo) references sexo(id_sexo);
-alter table cliente add foreign key (id_nacionalidade) references nacionalidade(id_nacionalidade);
-alter table cliente add foreign key (id_raca) references raca(id_raca);
-alter table cliente add foreign key (id_escolaridade) references escolaridade(id_escolaridade);
+alter table clientes add foreign key (id_cidade) references cidade(id_cidade);
+alter table clientes add foreign key (id_sexo) references sexo(id_sexo);
+alter table clientes add foreign key (id_nacionalidade) references nacionalidade(id_nacionalidade);
+alter table clientes add foreign key (id_raca) references raca(id_raca);
+alter table clientes add foreign key (id_escolaridade) references escolaridade(id_escolaridade);
+alter table clientes add foreign key (id_estadocivil) references estadocivil(id_estadocivil);
 
 insert into estado (id_estado, estado) values 
 	(null, 'Mato Grosso do Sul'),
@@ -70,7 +74,10 @@ insert into estado (id_estado, estado) values
     (null, 'São Paulo'),
     (null, 'Paraná'),
     (null, 'Santa Catarina'),
-    (null, 'Rio Grande do Sul');
+    (null, 'Rio Grande do Sul'),
+    (null, 'Minas Gerais'),
+    (null, 'Distrito Federal');
+
 select * from estado;
 insert into cidade (id_cidade, cidade, id_estado) values
 	(null, 'Campo Grande', 1),
@@ -203,6 +210,7 @@ insert into cidade (id_cidade, cidade, id_estado) values
     (null, 'Palmeira dos Índios', 16),
     (null, 'Rio Largo', 16),
     (null, 'Delmiro Gouveia', 16);
+    
 insert into sexo (id_sexo, sexo) values
 	(null, 'Masculino'),
     (null, 'Feminino'),
@@ -225,81 +233,30 @@ insert into escolaridade (id_escolaridade, escolaridade) values
     (null, 'Superior Comp'),
     (null, 'Mestre'),
     (null, 'Doutor');
+insert into estadocivil (id_estadocivil, estadocivil) values
+	(null, 'Solteiro'),
+    (null, 'Cadaso'),
+    (null, 'Divorciado'),
+    (null, 'Viúvo');
+insert into cliente (id_cliente, nome, cpf, rg, id_cidade, id_sexo, id_nacionalidade, fone, id_raca, id_escolaridade, id_estadocivil, idade) values
+(NULL, 'Lucas Martins', '33.456.789-01', '56.789.012', 45, 1, 1, '(11) 98765-4321', 1, 3, 2, 28),
+(NULL, 'Ana Souza', '45.678.901-22', '67.890.123', 102, 2, 2, '(21) 99876-5432', 2, 4, 1, 56),
+(NULL, 'Ricardo Lima', '56.789.012-33', '78.901.234', 67, 1, 1, '(31) 91234-5678', 3, 5, 3, 34),
+(NULL, 'Beatriz Costa', '67.890.123-44', '89.012.345', 88, 2, 2, '(41) 92345-6789', 1, 6, 2, 41),
+(NULL, 'Felipe Oliveira', '78.901.234-55', '90.123.456', 55, 1, 1, '(51) 93456-7890', 2, 2, 4, 16),
+(NULL, 'Juliana Pereira', '89.012.345-66', '01.234.567', 120, 2, 2, '(61) 94567-8901', 3, 4, 1, 73),
+(NULL, 'Ricardo Ferreira', '90.123.456-77', '12.345.678', 30, 2, 1, '(71) 95678-9012', 1, 3, 2, 59),
+(NULL, 'Fernanda Alves', '01.234.567-88', '23.456.789', 115, 1, 2, '(81) 96789-0123', 2, 5, 3, 45),
+(NULL, 'Lucas Costa', '12.345.678-99', '34.567.890', 48, 3, 1, '(91) 97890-1234', 3, 6, 1, 12),
+(NULL, 'Patrícia Lima', '23.456.789-00', '45.678.901', 25, 1, 2, '(11) 98901-2345', 1, 4, 4, 68),
+(NULL, 'André Santos', '34.567.890-11', '56.789.012', 107, 2, 1, '(21) 99012-3456', 2, 2, 2, 54),
+(NULL, 'Isabela Rocha', '45.678.901-22', '67.890.123', 77, 1, 1, '(31) 91234-5678', 3, 5, 3, 39),
+(NULL, 'Tiago Almeida', '56.789.012-33', '78.901.234', 92, 2, 2, '(41) 92345-6789', 1, 6, 4, 25),
+(NULL, 'Juliana Ribeiro', '67.890.123-44', '89.012.345', 64, 3, 1, '(51) 93456-7890', 2, 3, 1, 78),
+(NULL, 'Roberto Souza', '78.901.234-55', '90.123.456', 101, 1, 2, '(61) 94567-8901', 3, 4, 2, 62),
+(NULL, 'Gabriela Costa', '89.012.345-66', '01.234.567', 19, 2, 1, '(71) 95678-9012', 1, 2, 3, 50),
+(NULL, 'Vitor Pereira', '90.123.456-77', '12.345.678', 82, 1, 2, '(81) 96789-0123', 2, 5, 4, 11),
+(NULL, 'Lúcia Almeida', '01.234.567-88', '23.456.789', 110, 2, 1, '(91) 97890-1234', 3, 6, 1, 23),
+(NULL, 'Eduardo Santos', '12.345.678-99', '34.567.890', 36, 3, 2, '(11) 98901-2345', 1, 4, 2, 77),
+(NULL, 'Marta Ferreira', '23.456.789-00', '45.678.901', 79, 1, 1, '(21) 99012-3456', 2, 3, 3, 18);
 
-select * from cidade;
-select * from cliente;
-	
-insert into cliente (id_cliente, nome, cpf, rg, id_cidade, id_sexo, id_nacionalidade, fone, id_raca, id_escolaridade) values
-(NULL, 'João da Silva', '123.456.789-00', '12.345.678', 45, 1, 1, '(11) 98765-4321', 1, 3),
-(NULL, 'Maria Oliveira', '234.567.890-11', '23.456.789', 102, 2, 2, '(21) 99876-5432', 2, 4),
-(NULL, 'Carlos Eduardo Santos', '345.678.901-22', '34.567.890', 67, 1, 1, '(31) 91234-5678', 3, 5),
-(NULL, 'Ana Beatriz Costa', '456.789.012-33', '45.678.901', 88, 2, 2, '(41) 92345-6789', 1, 6),
-(NULL, 'Felipe Pereira', '567.890.123-44', '56.789.012', 55, 1, 1, '(51) 93456-7890', 2, 2),
-(NULL, 'Juliana Martins', '678.901.234-55', '67.890.123', 120, 2, 2, '(61) 94567-8901', 3, 4),
-(NULL, 'Ricardo Almeida', '789.012.345-66', '78.901.234', 30, 2, 1, '(71) 95678-9012', 1, 3),
-(NULL, 'Fernanda Lima', '890.123.456-77', '89.012.345', 115, 1, 2, '(81) 96789-0123', 2, 5),
-(NULL, 'Lucas Souza', '901.234.567-88', '90.123.456', 48, 3, 1, '(91) 97890-1234', 3, 6),
-(NULL, 'Patrícia Rocha', '012.345.678-99', '01.234.567', 25, 1, 2, '(11) 98901-2345', 1, 4),
-(NULL, 'André Oliveira', '123.456.789-01', '12.345.678', 107, 2, 1, '(21) 99012-3456', 2, 2),
-(NULL, 'Isabela Santos', '234.567.890-12', '23.456.789', 77, 1, 1, '(31) 91234-5678', 3, 5),
-(NULL, 'Tiago Ferreira', '345.678.901-23', '34.567.890', 92, 2, 2, '(41) 92345-6789', 1, 6),
-(NULL, 'Juliana Costa', '456.789.012-34', '45.678.901', 64, 3, 1, '(51) 93456-7890', 2, 3),
-(NULL, 'Roberto Alves', '567.890.123-45', '56.789.012', 101, 1, 2, '(61) 94567-8901', 3, 4),
-(NULL, 'Gabriela Martins', '678.901.234-56', '67.890.123', 19, 2, 1, '(71) 95678-9012', 1, 2),
-(NULL, 'Vitor Costa', '789.012.345-67', '78.901.234', 82, 1, 2, '(81) 96789-0123', 2, 5),
-(NULL, 'Lúcia Oliveira', '890.123.456-78', '89.012.345', 110, 2, 1, '(91) 97890-1234', 3, 6),
-(NULL, 'Eduardo Lima', '901.234.567-89', '90.123.456', 36, 3, 2, '(11) 98901-2345', 1, 4),
-(NULL, 'Marta Almeida', '012.345.678-00', '01.234.567', 79, 1, 1, '(21) 99012-3456', 2, 3);
-select * from cliente;
-select * from cidade;
-select * from estado;
-
-select cliente.nome, cidade.cidade
-from cliente
-inner join cidade
-on cliente.id_cidade=cidade.id_cidade;
-describe cidade;
-
-
-
-select cliente.nome, estado.estado
-from cliente
-inner join cidade
-on cliente.id_cidade=cidade.id_cidade
-join estado
-on cidade.id_estado=estado.id_estado;
-
-select cliente.nome, cliente.cpf, raca.raca
-from cliente
-inner join raca
-on cliente.id_raca=raca.id_raca;
-
-select cliente.nome, nacionalidade.nacionalidade
-from cliente
-inner join nacionalidade
-on cliente.id_nacionalidade=nacionalidade.id_nacionalidade;
-
-select cliente.nome, escolaridade.escolaridade
-from cliente
-inner join escolaridade
-on cliente.id_escolaridade=escolaridade.id_escolaridade;
-
-select cliente.nome, cidade.cidade, estado.estado
-from cliente
-inner join cidade
-on cliente.id_cidade=cidade.id_cidade
-inner join estado
-on cidade.id_estado=estado.id_estado;
-
-select cliente.nome, cidade.cidade, estado.estado, cliente.fone, cliente.rg, sexo.sexo, raca.raca, escolaridade.escolaridade
-from cliente
-inner join cidade
-on cliente.id_cidade=cidade.id_cidade
-inner join estado
-on estado.id_estado=cidade.id_estado
-inner join sexo
-on cliente.id_sexo=sexo.id_sexo
-inner join raca
-on cliente.id_raca=raca.id_raca
-inner join escolaridade
-on cliente.id_escolaridade=escolaridade.id_escolaridade;
