@@ -139,7 +139,7 @@
       <string>Sexo</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="R_masculino">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -152,7 +152,7 @@
       <string>Masculino</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="R_feminino">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -286,7 +286,7 @@ border-color: rgb(107, 127, 255);</string>
       <string>User</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="LE_senha">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -299,7 +299,7 @@ border-color: rgb(107, 127, 255);</string>
       <enum>QLineEdit::EchoMode::Password</enum>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="LE_user">
      <property name="geometry">
       <rect>
        <x>240</x>
