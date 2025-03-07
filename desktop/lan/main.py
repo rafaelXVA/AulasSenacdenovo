@@ -4,7 +4,8 @@ from PySide6.QtGui import QPixmap, QIcon
 from form import Ui_furmulario
 from layout import Ui_MainWindow as Ui_Login
 from cardapio import Ui_MainWindow as Ui_Cardapio
-import mysql.connector
+from datetime import datetime
+from banco import *
 
 
 class MainWindow(QMainWindow):
@@ -29,16 +30,10 @@ class MainWindow(QMainWindow):
     def btn_login(self):
         self.password=self.login.le_password.text()
         self.user=self.login.le_user.text()
-        if self.password=='adm' and self.user=='adm':
-            window.close()
-            window_cardapio.show()
-            self.box.setWindowTitle('login')
-            self.box.setText('Login concluído com sucesso')
-            self.box.open()
-        else:
-            self.box.setWindowTitle('login')
-            self.box.setText('Falha no login')
-            self.box.open()
+        login(self.user, self.password)
+        
+        if 
+
     def btn_signup(self):
         window.close()
         window_cadastro.show()
@@ -51,32 +46,26 @@ class Cadastro(QMainWindow):
         self.cadastro=Ui_furmulario()
         self.cadastro.setupUi(self)
         self.cadastro.btn_completar.clicked.connect(self.completar)
+
+
     def completar(self):
         window_cadastro.close()
         nome=self.cadastro.LE_nome.text()
         cpf=self.cadastro.LE_cpf.text()
-        self.cadastro.R_masculino.setChecked(True)
         sexo=int()
         if self.cadastro.R_masculino.isChecked():
-            return sexo==1
+            sexo=1
         elif self.cadastro.R_feminino.isChecked():
-            return sexo==2
+            sexo=2
         endereco=self.cadastro.LE_endereco.text()
         telefone=self.cadastro.LE_telefone.text()
-        nascimento=self.cadastro.DE_nascimento.date()
+        nascimento=self.cadastro.DE_nascimento.text() #data para texto
+        data_python = datetime.strptime(nascimento, '%d/%m/%Y') #data para python
+        data_sql = data_python.strftime('%Y-%m-%d') #data para sql
         user=self.cadastro.LE_user.text()
         senha=self.cadastro.LE_senha.text()
 
-        self.sql=mysql.connector.connect(
-            user='suporte2',
-            password='',
-            host='localhost',
-            database='lanchonete'
-        )
-        cursor=self.sql.cursor()
-        cursor.execute('insert into funcionario (id_funcionario, nome, cpf, sexo, endereco, telefone, nascimento, usuario, senha) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)',
-               (nome, cpf, sexo, endereco, telefone, nascimento, user, senha))
-        self.sql.commit()
+        adicionar_user(nome, cpf, sexo, endereco, telefone, data_sql, user, senha)
         self.cadastro.LE_cpf.clear()
         self.cadastro.LE_endereco.clear()
         self.cadastro.LE_nome.clear()
